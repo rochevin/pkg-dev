@@ -1,0 +1,13 @@
+* installing *source* package 'foofactors' ...
+** R
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+Warning in seq.default(along = x) :
+  correspondance partielle d'argument de 'along' par rapport à 'along.with'
+** building package indices
+** testing if installed package can be loaded
+*** arch - i386
+*** arch - x64
+* DONE (foofactors)
+In R CMD INSTALL

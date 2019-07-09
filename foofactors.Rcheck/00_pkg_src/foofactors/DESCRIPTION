@@ -1,0 +1,19 @@
+Package: foofactors
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Vincent",
+           family = "ROCHER",
+           role = c("aut", "cre"),
+           email = "first.last@example.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Suggests: testthat (>= 2.1.0)
+NeedsCompilation: no
+Packaged: 2019-07-09 09:38:17 UTC; ekohu
+Author: Vincent ROCHER [aut, cre] (<https://orcid.org/YOUR-ORCID-ID>)
+Maintainer: Vincent ROCHER <first.last@example.com>

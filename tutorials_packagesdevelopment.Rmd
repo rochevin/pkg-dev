@@ -1,0 +1,135 @@
+---
+title: "useR!2019 - Tutorials: Packages development"
+output: html_notebook
+---
+
+Source: https://github.com/jennybc/pkg-dev-tutorial
+
+##Partie 1 : Introduction
+
+```{r,eval=F}
+.Library
+.libPaths()
+installed.packages()
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+ipt <- installed.packages() %>% as_tibble()
+ipt
+```
+
+```{r}
+nrow(ipt)
+
+
+```
+
+```{r}
+ipt %>% dplyr::count(LibPath,Priority)
+```
+
+```{r}
+devtools::install_github("jimhester/lookup")
+```
+
+Create a package :
+
+```{r}
+usethis::create_package("foofactors")
+```
+
+Open a new Rsession window, directory with new project environment file.
+
+Adapted from the Whole Game : r-pkgs.orgs/whole-game.html
+
+Factors can be vexing : creation of a first function fbind
+
+define function inside rsession project :
+```{r,eval=F}
+usethis::use_r("fbind")
+```
+
+
+```{r}
+source("foofactors/R/fbind.R")
+(a <- factor(c("character","hits","your","eyeball")))
+(b <- factor(c("but","where it","integer")))
+fbind(a,b)
+```
+
+Best way to source :
+
+```{r}
+devtools::load_all()
+```
+
+fbind don't exist in global environment != de source
+
+Editer son Rprofile :
+```{r}
+usethis::edit_r_profile()
+```
+Ne pas load de packages dedans !
+
+```{r}
+usethis::use_partial_warnings()
+```
+
+
+```{r}
+devtools::check()
+```
+
+
+```{r}
+use_mit_license("Vincent ROCHER")
+```
+
+scaffold documentation :
+```{r}
+devtools::document()
+```
+
+use_github() créer un nouveau depot sur github
+
+##Partie 2 : testing
+
+
+```{r}
+insert_into <- function(x,y,where = 1){
+  if(where == 1) {
+    cbind(y,x)
+  }else if (where > ncol(x)){
+    cbind(x,y)
+  }else {
+    lhs <- (1:where)
+    cbind(x[lhs],y,x[-lhs])
+  }
+}
+
+
+df1 <- data.frame(a = 3,b = 4,c = 5)
+df2 <- data.frame(X = 1, Y = 2)
+insert_into(df1,df2,where = 1)
+insert_into(df1,df2,where = 2)
+insert_into(df1,df2,where = 3)
+```
+
+Create a function file with devtools::use_r("insert_into")
+
+```{r}
+usethis::use_test()
+```
+
+Créer un script R dans test
+Ensuite on lance devtools::test() qui lance testthat::test_file() pour tous les fichiers tests du directory
+
+devtools::test_coverage_file() regarde si toutes les lignes des fonctions ont été testées. Si non, ajouter un test dans ce cas là
+
+##Partie 3: Document and share 
+
+Turn a packages into a website -> pkgdown 

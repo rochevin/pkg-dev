@@ -1,0 +1,35 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(testthat)
+Warning message:
+package 'testthat' was built under R version 3.5.3 
+> library(foofactors)
+> 
+> test_check("foofactors")
+[31m--[39m [31m1. Failure: default where is far right (@test-add_col.R#21) [39m [31m---------------[39m
+add_col(df, "y", 2) not equal to data.frame(x = 1, y = 2).
+Names: 2 string mismatches
+Component 1: Mean relative difference: 0.5
+Component 2: Mean relative difference: 1
+
+== testthat results  ==========================================================
+OK: 7 SKIPPED: 0 WARNINGS: 0 FAILED: 1
+1. Failure: default where is far right (@test-add_col.R#21) 
+
+Error: testthat unit tests failed
+Execution halted
